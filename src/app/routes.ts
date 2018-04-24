@@ -1,13 +1,12 @@
-import { Routes } from '@angular/router';
-import {RegistroComponent} from './registro/registro.component';
-import {NavbarComponent} from './navbar/navbar.component';
-import {CompartirComponent} from './compartir/compartir.component';
-import {QuizzComponent} from './quizz/quizz.component';
-import {ResultadoComponent} from './resultado/resultado.component';
+import {Routes} from '@angular/router'
+import { RegisterComponent } from './register/register.component';
+import { QuizComponent } from './quiz/quiz.component';
+import { ResultComponent } from './result/result.component';
+import { AuthGuard } from './auth/auth.guard';
 
-export const appRoutes: Routes = [
-{path: 'registro', component: RegistroComponent},
-{path: 'quizz', component: QuizzComponent},
-{path: 'resultado', component: ResultadoComponent},
-{path: '', redirectTo: '/registro', pathMatch: 'full'}
+export const appRoutes : Routes =[
+    {path:'register',component:RegisterComponent},
+    {path:'quiz',component:QuizComponent,canActivate : [AuthGuard]},
+    {path:'result',component:ResultComponent,canActivate : [AuthGuard]},
+    {path:'',redirectTo:'/register',pathMatch:'full'}
 ];
